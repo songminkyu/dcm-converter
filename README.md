@@ -1,78 +1,79 @@
+
 # dcm-converter
 
-## 목적
+## Purpose
 
-`dcm_converter.py`는 의료 영상 포맷인 DICOM 파일을 JPEG 이미지로 변환하는 도구입니다.  
-특히, 압축된 DICOM 파일도 변환할 수 있도록 `pylibjpeg`, `gdcm` 라이브러리를 지원하며,  
-단일 파일 변환과 폴더 내 일괄 변환 기능을 모두 제공합니다.
+`dcm_converter.py` is a tool for converting DICOM files (medical image format) to JPEG images.  
+It supports compressed DICOM files with `pylibjpeg` and `gdcm` libraries,  
+and provides both single file conversion and batch conversion for all files in a folder.
 
-## 주요 기능
+## Key Features
 
-- DICOM(.dcm) 파일을 JPEG(.jpg)로 변환
-- 압축된 DICOM 지원 (`pylibjpeg`, `gdcm` 라이브러리 사용 시)
-- 단일 파일 및 폴더 일괄 변환
-- 이미지 품질(quality) 설정 가능
+- Convert DICOM (.dcm) files to JPEG (.jpg)
+- Supports compressed DICOM files (with `pylibjpeg`, `gdcm`)
+- Single file and batch folder conversion
+- Image quality setting available
 
-## 사용법
+## Usage
 
-### 1. 단일 파일 변환
+### 1. Single File Conversion
 
 ```bash
 python dcm_converter.py sample.dcm
 ```
 
-### 2. 출력 경로 지정
+### 2. Specify Output Path
 
 ```bash
 python dcm_converter.py sample.dcm -o output.jpg
 ```
 
-### 3. 폴더 내 모든 DICOM 파일 일괄 변환
+### 3. Batch Convert All DICOM Files in a Folder
 
 ```bash
 python dcm_converter.py input_folder -b
 ```
 
-### 4. 이미지 품질 설정 (기본값 95)
+### 4. Set Image Quality (Default: 95)
 
 ```bash
 python dcm_converter.py sample.dcm -q 90
 ```
 
-## 대화형 모드
+## Interactive Mode
 
-명령행 인자가 없으면, 프로그램 실행 후 DICOM 파일 경로를 입력받아 변환할 수 있습니다.
+If no command-line arguments are provided, the program will prompt for the DICOM file path after starting, and then perform the conversion.
 
-## 의존성 설치
+## Dependencies
 
-필수:
+Required:
 - pydicom
 - numpy
 - pillow
 
-압축된 DICOM 지원 (권장):
+Compressed DICOM support (recommended):
 - pylibjpeg
 - pylibjpeg-libjpeg
 - python-gdcm
 
-설치 예시:
+Installation Example:
 ```bash
 pip install pydicom numpy pillow
-pip install pylibjpeg pylibjpeg-libjpeg  # (옵션)
-pip install python-gdcm                  # (옵션)
+pip install pylibjpeg pylibjpeg-libjpeg  # (optional)
+pip install python-gdcm                  # (optional)
 ```
 
-## 라이브러리 지원 상태 확인
+## Library Support Status
 
-실행 시 아래와 같이 압축 해제 라이브러리 지원 여부를 출력합니다.
+When running, the program prints the status of decompression library support as follows:
 ```
-=== 압축 해제 라이브러리 상태 ===
-pylibjpeg 사용 가능: True/False
-gdcm 사용 가능: True/False
-경고: 압축 해제 라이브러리가 없습니다. 압축된 DICOM 파일 변환에 제한이 있을 수 있습니다.
+=== Decompression Library Status ===
+pylibjpeg available: True/False
+gdcm available: True/False
+Warning: No decompression libraries are available. There may be limitations when converting compressed DICOM files.
 ```
 
-## 참고
+## Notes
 
-- 변환된 JPEG 파일은 원본 DICOM 파일의 이름을 기준으로 자동 생성되며, 경로와 품질을 지정할 수 있습니다.
-- 압축된 DICOM 변환을 위해서 `pylibjpeg`, `gdcm` 라이브러리 설치를 권장합니다.
+- The converted JPEG file is automatically created based on the original DICOM file name; you can specify the path and quality.
+- For converting compressed DICOM files, it is recommended to install the `pylibjpeg` and `gdcm` libraries.
